@@ -325,7 +325,7 @@ $$\text{Age of Universe (years)} \approx 1.38 \times 10^{10}$$
 
 Therefore, the time necessary to find a 40x40 magic square by brute force is exponentially greater than the age of the universe, rendering such an approach computationally infeasible.
 
-### 📊 Performance Comparison
+### Performance Comparison
 
 | Order ($N$) | Search Space ($N^2!$) | Brute Force Time (Est.) | **My Algorithm Time** |
 |:---:|:---:|:---:|:---:|
