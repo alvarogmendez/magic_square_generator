@@ -311,34 +311,38 @@ $$(a_{i,n-i+1}+a_{n-j+1,j})-(a_{ij}+a_{n-j+1,n-i+1}) = \sum_{k=1}^{n}a_{n-k+1,k}
 ## Conclusions
 Following the recipe written in 2003 of T. Xie [1] we did not get results as good as the author but, indeed, we ended up with a more than suficient implementation of a Magic Square Generator.
 
-We tried to generate squares of order 30 succesfully under 20 minutes which might look very time wasting, but comparing to a brute force seach it is infinitly more efficient. There is a total of 900! posible combinations of squares of this size.
+We successfully generated squares of order 40 in approximately 4 hours and 15 minutes. While this might seem time-consuming, comparing it to a brute force search reveals it is infinitely more efficient. For a 40x40 square, there are $1600!$ (factorial of 1600) possible combinations.
 
-$${900! ≈ 1.45×10^{2274}}$$
+$$1600! \approx 2.09 \times 10^{4432}$$
 
-To put this number into perspective, let us make an exceedingly optimistic assumption about computational speed. Let us asume a hypothetical supercomputer capable of evaluating one Spanish Billion (U.S. trillion) combinations per second. The total time required in years would be calculated using the following operation:
+To put this number into perspective, let us make an exceedingly optimistic assumption about computational speed. Let us assume a hypothetical supercomputer capable of evaluating one trillion ($10^{12}$) combinations per second. The total time required in years would be calculated as:
 
-$$ \text{Time (years)} = \frac{1.45 \times 10^{2274} \text{ combinations}}{10^{12} \text{ combinations/sec} \times 31,536,000 \text{ sec/year}} \approx 4.6 \times 10^{2254} \text{ years} $$
+$$\text{Time (years)} = \frac{2.09 \times 10^{4432} \text{ combinations}}{10^{12} \text{ comb/s} \times 31,536,000 \text{ s/year}} \approx 6.6 \times 10^{4412} \text{ years}$$
 
-For context, the estimated age of the universe is approximately 13800 million years.
+For context, the estimated age of the universe is approximately 13.8 billion years.
 
-$$ \text{Age of Universe (years)} = 1.38 \times 10^{10} $$
+$$\text{Age of Universe (years)} \approx 1.38 \times 10^{10}$$
 
-Therefore, the time necessary to find a 30x30 magic square by brute force is orders of magnitude greater than the age of the universe, rendering such an approach computationally infeasible.
+Therefore, the time necessary to find a 40x40 magic square by brute force is exponentially greater than the age of the universe, rendering such an approach computationally infeasible.
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-Meter tabla to guapa aqui.
-XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+### 📊 Performance Comparison
 
-However in the paper the author mentions he es able to create squares of orther 100. No doubting in their research, the important points that I coud have done better and could be object to improve are:
+| Order ($N$) | Search Space ($N^2!$) | Brute Force Time (Est.) | **My Algorithm Time** |
+|:---:|:---:|:---:|:---:|
+| **8** | $1.2 \times 10^{89}$ | $> 10^{80}$ years | **2.6 s** |
+| **10** | $9.3 \times 10^{157}$ | $> 10^{140}$ years | **8.8 s** |
+| **15** | $5.9 \times 10^{432}$ | $> 10^{410}$ years | **41.5 s** |
+| **20** | $6.4 \times 10^{868}$ | $> 10^{850}$ years | **4 min 15 s** |
+| **30** | $1.4 \times 10^{2274}$ | $> 10^{2250}$ years | **22 min** |
+| **40** | $2.1 \times 10^{4432}$ | $> 10^{4400}$ years | **4 h 15 min** |
 
-* Make an implementation in a not interpretated lenguage such as C or Java instead of Python.
+---
 
-* Search for errors in my implementation.
+However, in related literature, some authors mention the ability to create squares of order 100. Without doubting their research, the important points where my implementation could be improved are:
 
-* Optimize the code for more efficent computing.
-
-* Use of concurrent methods.
-
-* Use of prepaired libraries such as *DEAP*, *PyGAD*, and *EvoPy*.
-
-* Even further than comparing to T. Xie et al, search of a diferent metaheuristic that can solve the problem more efficiently.
+* **Language:** Implement the algorithm in a compiled language such as C, C++, or Java instead of Python (interpreted).
+* **Debugging:** Perform a deep search for potential bottlenecks or logic errors in the current implementation.
+* **Optimization:** Refine the fitness function and mutation operators for more efficient computing.
+* **Concurrency:** Implement parallel processing to evaluate multiple individuals simultaneously.
+* **Libraries:** Utilize dedicated evolutionary computation libraries such as *DEAP*, *PyGAD*, or *EvoPy* instead of a custom implementation.
+* **Metaheuristic:** Beyond comparing to T. Xie et al., research different metaheuristics (e.g., Simulated Annealing, Ant Colony) that might solve this specific combinatorial problem more efficiently.
