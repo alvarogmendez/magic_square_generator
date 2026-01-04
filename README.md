@@ -6,7 +6,7 @@ I will attempt to generate Magic Squares of order N using evolutionary algorithm
 
 This project is part of an assignment for the *Busqueda Basada in Metaheuristicas* course.
 
-All the content of this file has been written while impplementig in the jupyter notebook XXXX, to explore more in depth read the notebook. A runnable version of the project can be found aund used following the setup instructions
+All the content of this file has been written while impplementig in [Magic Square Jupyter Notebook](MagicSquareGenerator_Notebook.ipynb) , to explore more in depth read the notebook. A runnable version of the project can be found aund used following the setup instructions
 
 ***
 ## Setup 
