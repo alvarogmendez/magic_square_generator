@@ -7,6 +7,8 @@
 # Magic Square Generator Notebook
 # Author: Álvaro González Méndez
 
+import argparse
+
 import numpy as np
 import numpy.random as rnd
 import copy
@@ -252,19 +254,34 @@ def second_mutation(individual_list):
         M[:, [idx1, idx2]] = M[:, [idx2, idx1]]
 
 
-SEED = 25
+# Command line options (python MagicSquareGenerator.py -h)
+parser = argparse.ArgumentParser(
+    description="Generate a magic square of order N with a two-phase evolutionary "
+                "algorithm (T. Xie and L. Kang, 2003) plus local rectification.")
+parser.add_argument("-n", "--size", type=int, default=10,
+                    help="order N of the square (default: 10; 40 takes about 4 hours)")
+parser.add_argument("--seed", type=int, default=25, help="random seed (default: 25)")
+parser.add_argument("--max-iterations", type=int, default=200000,
+                    help="maximum number of generations (default: 200000)")
+parser.add_argument("-o", "--output", default="matriz.txt",
+                    help="file where the square is saved (default: matriz.txt)")
+parser.add_argument("--no-plot", action="store_true",
+                    help="do not open the fitness evolution plots at the end")
+args = parser.parse_args()
+
+SEED = args.seed
 np.random.seed(SEED)
 
-OUTPUT_FILENAME = "matriz.txt"
+OUTPUT_FILENAME = args.output
 
 # Inicialize hyperparameters and required variables
-sqr_size = 40
+sqr_size = args.size
 s_deviaton = sqr_size**2
 population = 1
 offspring_num = sqr_size * 1
 din_offspring_limit = sqr_size / 2
 p_mutation = 1
-max_iterations = 200000
+max_iterations = args.max_iterations
 first_min = 10000000
 second_min = 10000000
 phase_flag = False # If phase_flag == True we are on second phase
@@ -356,4 +373,5 @@ finally:
   
   plt.tight_layout()
   
-  plt.show()
+  if not args.no_plot:
+    plt.show()
